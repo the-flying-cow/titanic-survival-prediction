@@ -10,7 +10,19 @@ Create a virtual environment:
 python -m venv .venv
 ```
 ## Run the project
-From the root folder, run
+
+In your terminal/command prompt, navigate to the root folder and execute the following 
+
 ```bash
-python src/Titanic_Survival_Prediction.py
+pip install -r requirements.txt
+```
+then run, 
+
+```bash
+python -m src.Titanic_Survival_Prediction
+```
+If you are inside the src folder, then run
+
+```bash
+python Titanic_Survival_Prediction
 ```
