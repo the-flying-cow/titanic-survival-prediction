@@ -10,4 +10,7 @@ Create a virtual environment:
 python -m venv .venv
 ```
 ## Run the project
-From the root folder, run yespython src/Titanic_Survival_Prediction.py
+From the root folder, run
+```bash
+python src/Titanic_Survival_Prediction.py
+```
