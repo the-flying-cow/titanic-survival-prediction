@@ -8,11 +8,29 @@ While there was some element of luck involved in surviving, it seems some groups
 This project trains and evaluates a Logistic Regression model on the given passenger dataset for the Titanic Survival Prediction.
 In this challenge, we build a predictive model that answers the question: “What sorts of people were more likely to survive?” using passenger data given to us.
 
+## Directory Structure
+```bash
+src/
+│── data_load.py        # functions to load Titanic dataset
+│── eda.py              # eda visualizations and summary stats
+│── pre_process.py      # preprocessing steps (missing values, encoding, scaling)
+│── variables.py        # feature and target definitions
+│── model.py            # model training, prediction, and reporting
+│── main.py             # orchestrates the pipeline
+titanic_dataset/        # dataset folder
+README.md               # documentation
+requirements.txt        # specifies the dependencies
+```
 ## Setup
+```bash
+git clone https://github.com/the-flying-cow/titanic-survival-prediction.git
+cd titanic-survival-prediction
+```
 
 Create a virtual environment:
 ```bash
 python -m venv .venv
+venv\Scripts\activate
 ```
 ## Run the project
 
