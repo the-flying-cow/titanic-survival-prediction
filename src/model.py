@@ -5,7 +5,6 @@ from scipy.stats import randint
 def model_predict(pipe, X_train, y_train, X_test):
     pipe.fit(X_train, y_train)
     preds= pipe.predict(X_test)
-    
     return preds
 
 def hyper_parameter_tune(pipe, X_train, y_train ):
@@ -22,9 +21,6 @@ def hyper_parameter_tune(pipe, X_train, y_train ):
     
     return random_search.best_estimator_
 
-def final_report(y_test, preds):
-
-    print("On the training dataset, following are the results:\n")
-    print(f"Accuracy: {accuracy_score(y_test, preds)}")
-    print("Confusion Matrix:\n",confusion_matrix(y_test, preds))
-    print("Classification Report:\n",classification_report(y_test, preds))
+def predict_survival(pipe, test):
+    preds= pipe.predict(test)
+    return preds
