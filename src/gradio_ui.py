@@ -31,7 +31,6 @@ def predict_inputs(pclass, sex, age, sibsp, embarked, fare):
         sex= 0
     
     features= [[pclass, sex, age, sibsp, embarked_q, embarked_s, log_fare]]
-    print(predict_survival(pipe, features)[0])
     return predict_survival(pipe, features)[0]
 
 inputs= [
