@@ -1,8 +1,7 @@
 from sklearn.model_selection import RandomizedSearchCV
 from scipy.stats import randint
 
-def model_predict(pipe, X_train, y_train, X_test):
-    pipe.fit(X_train, y_train)
+def model_predict(pipe, X_test):
     preds= pipe.predict(X_test)
     return preds
 
