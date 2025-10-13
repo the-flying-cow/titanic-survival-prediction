@@ -8,10 +8,8 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 import os
+import joblib
 from sklearn import set_config
-import numpy as np
-import gradio as gr
-
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TRAIN_PATH = os.path.join(BASE_DIR,"titanic_dataset", "train.csv")
 
@@ -29,6 +27,11 @@ def main():
     rf_pipe= Pipeline([("standard_scaling", StandardScaler()), ("classifier", RandomForestClassifier(random_state= 7))])
     rf_pipe= hyper_parameter_tune(rf_pipe, X_train, y_train)
 
+    models_dir= os.path.join(BASE_DIR, "models")
+    os.makedirs(models_dir, exist_ok= True)
+    model_path= os.path.join(models_dir, "best_model.pkl")
+    joblib.dump(rf_pipe, model_path)
+    
     return rf_pipe
 
 if __name__=='__main__':

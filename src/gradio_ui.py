@@ -2,9 +2,15 @@ from main import main
 from model import predict_survival
 import gradio as gr
 import numpy as np
+import joblib
+import os
 
-pipe= main()
-
+BASE_DIR= os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MODEL_PATH= os.path.join(BASE_DIR, "models", "best_model.pkl")
+if os.path.exists(MODEL_PATH):
+    pipe= joblib.load(MODEL_PATH)
+else:
+    pipe= main()
 def predict_inputs(pclass, sex, age, sibsp, embarked, fare):
     try:
         pclass = int(pclass)
@@ -31,7 +37,7 @@ def predict_inputs(pclass, sex, age, sibsp, embarked, fare):
         sex= 0
     
     features= [[pclass, sex, age, sibsp, embarked_q, embarked_s, log_fare]]
-    return predict_survival(pipe, features)[0]
+    return "Survived" if predict_survival(pipe, features)[0] == 1 else "Not Survived"
 
 inputs= [
         gr.Dropdown([1,2,3], label="Pclass"),
