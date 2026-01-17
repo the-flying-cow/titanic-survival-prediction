@@ -14,7 +14,7 @@ def hyper_parameter_tune(pipe, X_train, y_train ):
          "classifier__criterion":['gini', 'entropy']
         }
 
-    random_search= RandomizedSearchCV(pipe, param_distributions= params, n_jobs= -1, cv= 5, n_iter= 100, random_state= 7)
+    random_search= RandomizedSearchCV(pipe, scoring= 'accuracy',param_distributions= params, n_jobs= -1, cv= 5, n_iter= 100)
     random_search.fit(X_train, y_train)
     
     return random_search.best_estimator_
